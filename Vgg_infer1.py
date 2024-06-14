@@ -8,7 +8,7 @@ from keras.api.models import load_model
 from keras.api.applications.vgg16 import preprocess_input
 
 # Load the saved model
-loaded_model = load_model("gender_identify_D-0_e-20_bs-12.h5")
+loaded_model = load_model("VGG16_gender_identify_D-0.5_e-12_bs-3.h5")
 
 # Function to load and preprocess test images
 def preprocess_image(image_path):

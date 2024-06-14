@@ -20,13 +20,13 @@ def gender_images_from_folder(folder, label, subset_size):
     return images, labels
 
 # Set the number of samples per class for the subset (limited dataset)
-subset_size = 101
+subset_size = 1700
 
-# Load defective and defect-free carton box images
+# Load Female and Male carton box images
 female_images, female_labels = gender_images_from_folder("D:\\Full AIML Course\\Gen AIML Tasks\\Gender_Identification\\gender\\train\\female", 1, subset_size)
 male_images, male_labels = gender_images_from_folder("D:\\Full AIML Course\\Gen AIML Tasks\\Gender_Identification\\gender\\train\\male", 0, subset_size)
 
-# Combine defective and defect-free images and labels
+# Combine Female and Male images and labels
 images = female_images[:subset_size] + male_images[:subset_size]
 labels = female_labels[:subset_size] + male_labels[:subset_size]
 
@@ -58,7 +58,7 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # Train the model
-history = model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=20, batch_size=12)
+history = model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=12, batch_size=2)
 
 # Evaluate the model on the training set
 loss, accuracy = model.evaluate(X_train, y_train)
@@ -71,4 +71,4 @@ print('Validation Loss:', loss)
 print('Validation Accuracy:', accuracy)
 
 # Save the model to a file
-model.save("gender_identify_D-0.5_e-20_bs-12.h5")
+model.save("gender_identify_D-0.5_e-12_bs-2.h5")
